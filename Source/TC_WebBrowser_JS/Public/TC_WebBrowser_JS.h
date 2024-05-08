@@ -18,5 +18,7 @@ public:
 	
 	UFUNCTION(Blueprintable,BlueprintCallable,Category="Web Browser")
 	void UnbindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true);
-	
+
+protected:
+	virtual TSharedRef<SWidget> RebuildWidget() override;
 };

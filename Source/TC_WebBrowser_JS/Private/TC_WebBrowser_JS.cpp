@@ -28,3 +28,17 @@ void UTC_WebBrowser_JS::UnbindUObject(const FString& Name, UObject* Object, bool
 	}
 }
 
+
+
+TSharedRef<SWidget> UTC_WebBrowser_JS::RebuildWidget()
+{
+	auto widgetRef =  Super::RebuildWidget();
+	if (widgetRef == WebBrowserWidget )
+	{
+		//支持中文输入
+		ITextInputMethodSystem* const TextInputMethodSystem = FSlateApplication::Get().GetTextInputMethodSystem();
+		WebBrowserWidget->BindInputMethodSystem(TextInputMethodSystem);
+	}
+	return widgetRef;
+}
+
